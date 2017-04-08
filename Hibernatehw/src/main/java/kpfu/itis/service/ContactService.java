@@ -9,14 +9,12 @@ import java.util.List;
  */
 public interface ContactService {
 
-    void addContact(ContactsEntity contact);
-
     void deleteContact(Integer id);
 
-    void editContact(Integer id);
+    void saveOrUpdateContact(ContactsEntity contactsEntity);
 
     List<ContactsEntity> getAllContacts();
 
-    ContactsEntity getContactById(Long id);
+    ContactsEntity getContactById(int id);
 
 }

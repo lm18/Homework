@@ -18,18 +18,13 @@ public class ContactServiceImpl implements ContactService {
     private ContactDAO contactDAO;
 
     @Transactional
-    public void addContact(ContactsEntity contact) {
-        contactDAO.addContact(contact);
-    }
-
-    @Transactional
     public void deleteContact(Integer id) {
         contactDAO.deleteContact(id);
     }
 
     @Transactional
-    public void editContact(Integer id) {
-        contactDAO.editContact(id);
+    public void saveOrUpdateContact(ContactsEntity contactsEntity) {
+        contactDAO.saveOrUpdateContact(contactsEntity);
     }
 
     @Transactional
@@ -38,7 +33,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Transactional
-    public ContactsEntity getContactById(Long id) {
+    public ContactsEntity getContactById(int id) {
         return contactDAO.getContactById(id);
     }
 }

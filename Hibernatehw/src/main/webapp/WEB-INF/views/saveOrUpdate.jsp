@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Admin
-  Date: 20.03.2017
-  Time: 22:41
+  Date: 18.03.2017
+  Time: 19:38
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -16,11 +16,11 @@
     <title>New/Edit contact</title>
 </head>
 <body>
-<h2>Edit contact</h2>
-<form:form action="updateContact" method="post" modelAttribute="contact">
+<h2>New/Edit contact</h2>
+<form:form action="/saveOrUpdateContact" method="post" modelAttribute="contactsEntity">
     <table>
-        <form:hidden path="id"/>
         <tr>
+            <form:hidden path="id"/>
             <td>Name:</td>
             <td><form:input path="name"/></td>
         </tr>

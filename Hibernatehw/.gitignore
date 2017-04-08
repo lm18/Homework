@@ -1,4 +1,5 @@
 target/
 .idea/
-Hinernatehw.iml
+Hibernatehw.iml
 test/
+src/main/webapp/resources/

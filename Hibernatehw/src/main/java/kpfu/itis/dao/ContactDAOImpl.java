@@ -15,20 +15,14 @@ public class ContactDAOImpl implements ContactDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public void addContact(ContactsEntity contact) {
-        sessionFactory.getCurrentSession().save(contact);
-    }
-
     public void deleteContact(Integer id) {
         ContactsEntity contact = sessionFactory.getCurrentSession().load(
                 ContactsEntity.class, id);
         sessionFactory.getCurrentSession().delete(contact);
     }
 
-    public void editContact(Integer id) {
-        ContactsEntity contact = sessionFactory.getCurrentSession().load(
-                ContactsEntity.class, id);
-        sessionFactory.getCurrentSession().update(contact);
+    public void saveOrUpdateContact(ContactsEntity contactsEntity) {
+        sessionFactory.getCurrentSession().saveOrUpdate(contactsEntity);
     }
 
     public List<ContactsEntity> getAllContacts() {
@@ -36,10 +30,10 @@ public class ContactDAOImpl implements ContactDAO {
                 .list();
     }
 
-    public ContactsEntity getContactById(Long id) {
+    public ContactsEntity getContactById(int id) {
         ContactsEntity contactsEntity = null;
         try {
-            Criteria crit =  sessionFactory.openSession().createCriteria(ContactsEntity.class);
+            Criteria crit = sessionFactory.openSession().createCriteria(ContactsEntity.class);
             crit.add(Restrictions.idEq(id));
             contactsEntity = (ContactsEntity) crit.uniqueResult();
         } catch (Exception e) {
@@ -47,5 +41,4 @@ public class ContactDAOImpl implements ContactDAO {
         }
         return contactsEntity;
     }
-
 }

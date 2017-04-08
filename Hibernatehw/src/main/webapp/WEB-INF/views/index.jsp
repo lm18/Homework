@@ -27,12 +27,12 @@
     <th>Action</th>
     <c:forEach items="${contactList}" var="contact">
         <tr>
-            <td>${contact.name}</td>
+            <td><input type="hidden" name="name" value="${contact.name}">${contact.name}</td>
             <td>${contact.email}</td>
             <td>${contact.address}</td>
             <td>${contact.phone}</td>
             <td>
-                <a href="/editContact?id=${contact.id}">Edit</a>
+                <a href="/editContact/${contact.id}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="/deleteContact/${contact.id}">Delete</a>
             </td>

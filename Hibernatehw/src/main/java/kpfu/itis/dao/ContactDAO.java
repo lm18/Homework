@@ -9,13 +9,11 @@ import java.util.List;
  */
 public interface ContactDAO {
 
-    void addContact(ContactsEntity contact);
-
     void deleteContact(Integer id);
 
-    void editContact(Integer id);
+    void saveOrUpdateContact(ContactsEntity contactsEntity);
 
     List<ContactsEntity> getAllContacts();
 
-    ContactsEntity getContactById(Long id);
+    ContactsEntity getContactById(int id);
 }
