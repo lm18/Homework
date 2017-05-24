@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <aop:config>
+        <aop:aspect id="logger" ref="logging">
+            <aop:pointcut id="allMethods"
+                          expression="execution(* ru.kpfu.itis.Developer.*(..))"/>
+            <aop:before pointcut-ref="allMethods" method="beforeAdvice"/>
+            <aop:after pointcut-ref="allMethods" method="afterAdvice"/>
+            <aop:after-returning pointcut-ref="allMethods"
+                                 returning="developer"
+                                 method="afterReturningAdvice"/>
+            <aop:after-throwing pointcut-ref="allMethods"
+                                throwing="e"
+                                method="afterThrowingAdvice"/>
+            <aop:around method="aroundAdvice" pointcut-ref="allMethods"/>
+        </aop:aspect>
+    </aop:config>
+
+    <bean id="developer" class="ru.kpfu.itis.Developer">
+        <property name="name"  value="Ivan" />
+        <property name="speciality"  value="Python Developer" />
+        <property name="experience"  value="14" />
+    </bean>
+
+    <bean id="logging" class="ru.kpfu.itis.Logging"/>
+</beans>
