@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Admin
-  Date: 18.03.2017
-  Time: 19:38
+  Date: 15.04.2017
+  Time: 22:38
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -17,24 +17,28 @@
 </head>
 <body>
 <h2>New/Edit contact</h2>
-<form:form action="/saveOrUpdateContact" method="post" modelAttribute="contactsEntity">
+<form:form action="/saveOrUpdateTrip" method="post" modelAttribute="tripEntity">
     <table>
         <tr>
-            <form:hidden path="id"/>
-            <td>Name:</td>
-            <td><form:input path="name"/></td>
+            <form:hidden path="tripId"/>
+            <td>Number:</td>
+            <td><form:input path="tripNumber"/></td>
         </tr>
         <tr>
-            <td>Email:</td>
-            <td><form:input path="email"/></td>
+            <td>Type:</td>
+            <td><form:input path="type"/></td>
         </tr>
         <tr>
-            <td>Address:</td>
-            <td><form:input path="address"/></td>
+            <td>Departure:</td>
+            <td><form:input path="departure"/></td>
         </tr>
         <tr>
-            <td>Phone:</td>
-            <td><form:input path="phone"/></td>
+            <td>Arrival:</td>
+            <td><form:input path="arrival"/></td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td><form:input path="countryByCountry"/></td>
         </tr>
     </table>
     <input type="submit" value="Save">

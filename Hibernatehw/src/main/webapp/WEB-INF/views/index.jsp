@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Admin
-  Date: 28.03.2017
-  Time: 14:59
+  Date: 15.04.2017
+  Time: 20:21
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=utf8"
@@ -13,31 +13,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Contacts</title>
+    <title>Рейсы</title>
 </head>
 <body>
-<h2>Contacts</h2>
-<a href="/newContact">New contact</a>
+<a href="/newTrip">New Trip</a>
 <br/><br/>
 <table border="1">
-    <th>Name</th>
-    <th>Email</th>
-    <th>Address</th>
-    <th>Phone</th>
+    <th>Number</th>
+    <th>Type</th>
+    <th>Departure</th>
+    <th>Arrival</th>
     <th>Action</th>
-    <c:forEach items="${contactList}" var="contact">
+    <c:forEach items="${triptList}" var="trip">
         <tr>
-            <td><input type="hidden" name="name" value="${contact.name}">${contact.name}</td>
-            <td>${contact.email}</td>
-            <td>${contact.address}</td>
-            <td>${contact.phone}</td>
+            <input type="hidden" value="${trip.tripId}"/>
+            <td>${trip.tripNumber}</td>
+            <td>${trip.type}</td>
+            <td>${trip.departure}</td>
+            <td>${trip.arrival}</td>
+            <input type="hidden" value="${trip.countryByCountry}"/>
             <td>
-                <a href="/editContact/${contact.id}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="/deleteContact/${contact.id}">Delete</a>
+                <a href="/deleteTrip/${trip.tripId}">Delete</a>
             </td>
         </tr>
     </c:forEach>
 </table>
+<a href="<c:url value='/j_spring_security_logout'/>"/>Выход</a>
 </body>
 </html>
